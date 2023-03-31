@@ -43,6 +43,7 @@ public class PriceControllerTest {
         PriceDTO expectedPriceDTO = new PriceDTO();
         expectedPriceDTO.setPriceList(1);
         expectedPriceDTO.setPrice(35.50);
+        expectedPriceDTO.setPriority(1);
 
         when(priceService.getPrice(PRODUCT_ID, BRAND_ID, requestTime)).thenReturn(expectedPriceDTO);
 
@@ -50,6 +51,7 @@ public class PriceControllerTest {
 
         assertEquals(expectedPriceDTO.getPriceList(), response.getPriceList());
         assertEquals(expectedPriceDTO.getPrice(), response.getPrice());
+        assertEquals(expectedPriceDTO.getPriority(), response.getPriority());
     }
 
     @Test
@@ -58,6 +60,7 @@ public class PriceControllerTest {
         PriceDTO expectedPriceDTO = new PriceDTO();
         expectedPriceDTO.setPriceList(2);
         expectedPriceDTO.setPrice(25.45);
+        expectedPriceDTO.setPriority(1);
 
         when(priceService.getPrice(PRODUCT_ID, BRAND_ID, requestTime)).thenReturn(expectedPriceDTO);
 
@@ -65,6 +68,7 @@ public class PriceControllerTest {
 
         assertEquals(expectedPriceDTO.getPriceList(), response.getPriceList());
         assertEquals(expectedPriceDTO.getPrice(), response.getPrice());
+        assertEquals(expectedPriceDTO.getPriority(), response.getPriority());
     }
 
     @Test

@@ -20,7 +20,7 @@ public class PriceService {
     public PriceDTO getPrice(Long productId, Long brandId, LocalDateTime applicationDate) {
 
         List<Price> prices =
-                priceRepository.findByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualAndPriceList(
+                priceRepository.findByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualAndPriority(
                         brandId, productId, applicationDate, applicationDate, 1);
 
         if (prices.isEmpty()) {

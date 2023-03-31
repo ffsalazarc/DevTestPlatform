@@ -26,6 +26,7 @@ public class PriceInit implements CommandLineRunner {
                 .priceList(1)
                 .startDate(LocalDateTime.parse("2020-06-14T00:00:00"))
                 .endDate(LocalDateTime.parse("2020-12-31T23:59:59"))
+                .priority(0)
                 .price(35.50)
                 .currency("EUR")
                 .build();
@@ -36,6 +37,7 @@ public class PriceInit implements CommandLineRunner {
                 .priceList(2)
                 .startDate(LocalDateTime.parse("2020-06-14T15:00:00"))
                 .endDate(LocalDateTime.parse("2020-06-14T18:30:00"))
+                .priority(1)
                 .price(25.45)
                 .currency("EUR")
                 .build();
@@ -46,6 +48,7 @@ public class PriceInit implements CommandLineRunner {
                 .priceList(1)
                 .startDate(LocalDateTime.parse("2020-06-15T00:00:00"))
                 .endDate(LocalDateTime.parse("2020-06-15T11:00:00"))
+                .priority(2)
                 .price(30.50)
                 .currency("EUR")
                 .build();
@@ -56,6 +59,7 @@ public class PriceInit implements CommandLineRunner {
                 .priceList(1)
                 .startDate(LocalDateTime.parse("2020-06-15T16:00:00"))
                 .endDate(LocalDateTime.parse("2020-12-31T23:59:59"))
+                .priority(3)
                 .price(38.95)
                 .currency("EUR")
                 .build();

@@ -26,6 +26,8 @@ public class PriceDTO {
     @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private LocalDateTime endDate;
 
+    private Integer priority;
+
     private Double price;
 
     private String currency;

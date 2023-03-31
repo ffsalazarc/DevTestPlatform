@@ -23,17 +23,20 @@ public class Price {
     @Column(name = "BRAND_ID")
     private Long brandId;
 
-    @Column(name = "PRODUCT_ID")
-    private Long productId;
-
-    @Column(name = "PRICE_LIST")
-    private Integer priceList;
-
     @Column(name = "START_DATE")
     private LocalDateTime startDate;
 
     @Column(name = "END_DATE")
     private LocalDateTime endDate;
+
+    @Column(name = "PRICE_LIST")
+    private Integer priceList;
+
+    @Column(name = "PRODUCT_ID")
+    private Long productId;
+
+    @Column(name = "PRIORITY")
+    private Integer priority;
 
     @Column(name = "PRICE")
     private Double price;
