@@ -41,9 +41,8 @@ public class PriceControllerTest {
     public void testRequestAt10AMOnDay14() {
         LocalDateTime requestTime = LocalDateTime.of(2020, 6, 14, 10, 0, 0);
         PriceDTO expectedPriceDTO = new PriceDTO();
-        expectedPriceDTO.setPriceList(1);
-        expectedPriceDTO.setPrice(35.50);
-        expectedPriceDTO.setPriority(1);
+        expectedPriceDTO.setPriceList(2);
+        expectedPriceDTO.setPrice(38.95);
 
         when(priceService.getPrice(PRODUCT_ID, BRAND_ID, requestTime)).thenReturn(expectedPriceDTO);
 
@@ -51,7 +50,6 @@ public class PriceControllerTest {
 
         assertEquals(expectedPriceDTO.getPriceList(), response.getPriceList());
         assertEquals(expectedPriceDTO.getPrice(), response.getPrice());
-        assertEquals(expectedPriceDTO.getPriority(), response.getPriority());
     }
 
     @Test
@@ -105,7 +103,7 @@ public class PriceControllerTest {
     public void testRequestAt9PMOnDay16() {
         LocalDateTime requestTime = LocalDateTime.of(2020, 6, 16, 21, 0, 0);
         PriceDTO expectedPriceDTO = new PriceDTO();
-        expectedPriceDTO.setPriceList(4);
+        expectedPriceDTO.setPriceList(3);
         expectedPriceDTO.setPrice(38.95);
 
         when(priceService.getPrice(PRODUCT_ID, BRAND_ID, requestTime)).thenReturn(expectedPriceDTO);

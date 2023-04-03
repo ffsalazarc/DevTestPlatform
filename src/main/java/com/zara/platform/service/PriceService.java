@@ -8,6 +8,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.List;
 
 @Service
@@ -20,24 +21,30 @@ public class PriceService {
     public PriceDTO getPrice(Long productId, Long brandId, LocalDateTime applicationDate) {
 
         List<Price> prices =
-                priceRepository.findByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqualAndPriority(
-                        brandId, productId, applicationDate, applicationDate, 1);
+                priceRepository.findByBrandIdAndProductIdAndStartDateLessThanEqualAndEndDateGreaterThanEqual(
+                        brandId, productId, applicationDate, applicationDate);
 
         if (prices.isEmpty()) {
             return null;
         }
 
-        Price price = prices.get(0);
+        prices.sort(Comparator.comparingInt(Price::getPriority).reversed());
 
-        PriceDTO priceDTO = new PriceDTO();
-        priceDTO.setBrandId(price.getBrandId());
-        priceDTO.setProductId(price.getProductId());
-        priceDTO.setPriceList(price.getPriceList());
-        priceDTO.setStartDate(price.getStartDate());
-        priceDTO.setEndDate(price.getEndDate());
-        priceDTO.setPrice(price.getPrice());
-        priceDTO.setCurrency(price.getCurrency());
+        for (Price price : prices) {
+            if (applicationDate.isAfter(price.getStartDate()) || applicationDate.isEqual(price.getStartDate())
+                    && (applicationDate.isBefore(price.getEndDate()) || applicationDate.isEqual(price.getEndDate()))) {
+                PriceDTO priceDTO = new PriceDTO();
+                priceDTO.setBrandId(price.getBrandId());
+                priceDTO.setProductId(price.getProductId());
+                priceDTO.setPriceList(price.getPriceList());
+                priceDTO.setStartDate(price.getStartDate());
+                priceDTO.setEndDate(price.getEndDate());
+                priceDTO.setPrice(price.getPrice());
+                priceDTO.setCurrency(price.getCurrency());
+                return priceDTO;
+            }
+        }
 
-        return priceDTO;
+        return null;
     }
 }
